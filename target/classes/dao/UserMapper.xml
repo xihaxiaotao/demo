@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//UNKNOWN/" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserMapper">
+    <select id="getAll" resultType="pojo.User">
+        select * from smbms_user  limit  #{from},#{size}
+    </select>
+    <select id="getInfo" resultType="pojo.User"> 
+        select * from smbms_user  where id=#{id}
+    </select>
+    <insert id="add">
+        insert smbms_user (userCode,userName) values (#{userCode},#{userName})
+    </insert>
+    <update id="update">
+        update smbms_user set userCode=#{userCode},userName=#{userName}  where id=#{id}
+    </update>
+    <delete id="del">
+        delete  from smbms_user  where id=#{id}
+    </delete>
+    <select id="getUserCount" resultType="Integer">
+        select  count(*)  from smbms_user
+    </select>
+</mapper>
